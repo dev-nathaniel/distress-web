@@ -226,11 +226,11 @@ export default function Home() {
                     Key fobs, car mounts, and uniform patches. Trigger a silent alarm without unlocking your phone.
                   </p>
                 </div>
-                <div className="hidden sm:flex gap-2">
+                {/* <div className="hidden sm:flex gap-2">
                   <div className="w-12 h-12 rounded-full border border-white/20 bg-zinc-800 flex items-center justify-center">
                     <div className="w-8 h-8 rounded-full bg-black border border-red-900/50 shadow-[0_0_10px_rgba(220,38,38,0.2)]" />
                   </div>
-                </div>
+                </div> */}
               </GridCard>
 
             </div>

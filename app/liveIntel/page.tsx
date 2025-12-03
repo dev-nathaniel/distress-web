@@ -293,10 +293,11 @@ const Globe3D: React.FC<Globe3DProps> = ({ onIncidentSelect, selectedIncidentId 
 
             // Smooth Camera Transitions
             if (isTransitioning.current && targetCameraPos.current && targetLookAt.current) {
-                // Interpolate camera position
-                camera.position.lerp(targetCameraPos.current, 0.05);
                 // Interpolate controls target
                 controls.target.lerp(targetLookAt.current, 0.05);
+                // Interpolate camera position
+                camera.position.lerp(targetCameraPos.current, 0.05);
+
 
                 // Check if we are "close enough" to stop force-updating
                 if (camera.position.distanceTo(targetCameraPos.current) < 0.1) {
