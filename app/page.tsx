@@ -58,7 +58,7 @@ export default function Home() {
                 </button>
               </div>
 
-              <div className="mt-12 flex items-center gap-6 text-sm text-zinc-600 font-mono">
+              <div className="mt-12 mb-10 flex items-center gap-6 text-sm text-zinc-600 font-mono">
                 <span>TRUSTED BY:</span>
                 <div className="flex gap-6 opacity-50 grayscale hover:grayscale-0 transition duration-500">
                   <span>ESTATE·LINK</span>
@@ -141,10 +141,10 @@ export default function Home() {
           <div className="absolute inset-0 bg-grid-pattern opacity-[0.05] pointer-events-none" />
           <div className="max-w-4xl mx-auto px-6 text-center">
             <div className="inline-block px-3 py-1 mb-6 border border-white/10 text-xs font-mono text-zinc-400 uppercase tracking-widest">The Concept</div>
-            <h2 className="text-3xl md:text-5xl font-bold mb-8">The Military Palantir for the People.</h2>
+            <h2 className="text-3xl md:text-5xl font-bold mb-8">Intelligence Infrastructure for Every Citizen.</h2>
             <p className="text-xl text-zinc-400 leading-relaxed">
               We aim to create a better life for citizens of developing nations facing medical emergencies, insecurity, and more.
-              Our goal is to balance the life of the poor, giving them what the rich have access to—for cheap.
+              We’re building critical safety infrastructure for the 5 billion people living without reliable emergency systems.
             </p>
           </div>
         </section>

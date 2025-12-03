@@ -319,8 +319,10 @@ const Globe3D: React.FC<Globe3DProps> = ({ onIncidentSelect, selectedIncidentId 
             resizeObserver.disconnect();
             if (mountRef.current) {
                 mountRef.current.removeEventListener('click', onMouseClick);
-                const canvas = mountRef.current.querySelector('canvas');
-                if (canvas) mountRef.current.removeChild(canvas);
+                // Robust cleanup: remove all children (canvases)
+                while (mountRef.current.firstChild) {
+                    mountRef.current.removeChild(mountRef.current.firstChild);
+                }
             }
             controls.removeEventListener('start', onControlsStart);
             controls.dispose();
@@ -330,7 +332,7 @@ const Globe3D: React.FC<Globe3DProps> = ({ onIncidentSelect, selectedIncidentId 
     }, []);
 
     return (
-        <div ref={mountRef} className="w-full h-full cursor-crosshair min-h-[500px] relative">
+        <div ref={mountRef} className="w-full h-full cursor-crosshair min-h-[500px] relative overflow-hidden">
             {isLoading && (
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <Loader2 className="animate-spin text-zinc-600" size={32} />
