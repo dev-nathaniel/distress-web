@@ -293,17 +293,41 @@ const Globe3D: React.FC<Globe3DProps> = ({ onIncidentSelect, selectedIncidentId 
 
             // Smooth Camera Transitions
             if (isTransitioning.current && targetCameraPos.current && targetLookAt.current) {
-                // Interpolate controls target
-                controls.target.lerp(targetLookAt.current, 0.05);
-                // Interpolate camera position
-                camera.position.lerp(targetCameraPos.current, 0.05);
+                const targetPos = targetCameraPos.current;
+                const targetLook = targetLookAt.current;
 
+                // Calculate angle between current camera vector and target camera vector
+                const currentDir = camera.position.clone().normalize();
+                const targetDir = targetPos.clone().normalize();
+                const angle = currentDir.angleTo(targetDir);
+
+                // Turn before Zoom logic
+                // If angle is significant (> 5 degrees approx 0.08 rad), prioritize rotation
+                if (angle > 0.1) {
+                    // ROTATION PHASE
+                    // Maintain current altitude or safe high altitude to avoid clipping
+                    const currentDist = camera.position.length();
+                    const targetDist = targetPos.length();
+                    const safeDist = Math.max(currentDist, targetDist);
+
+                    // Move towards the target direction at the safe distance
+                    const desiredPos = targetDir.clone().multiplyScalar(safeDist);
+
+                    camera.position.lerp(desiredPos, 0.05);
+                    // Correction to keep it spherical (prevent cutting through the globe)
+                    camera.position.normalize().multiplyScalar(safeDist);
+                } else {
+                    // ZOOM PHASE
+                    // Once aligned, move to the exact target position
+                    camera.position.lerp(targetPos, 0.05);
+                }
+
+                // Always interpolate the look-at target smoothly
+                controls.target.lerp(targetLook, 0.05);
 
                 // Check if we are "close enough" to stop force-updating
-                if (camera.position.distanceTo(targetCameraPos.current) < 0.1) {
+                if (camera.position.distanceTo(targetPos) < 0.1 && controls.target.distanceTo(targetLook) < 0.1) {
                     isTransitioning.current = false;
-                    // We do NOT clear targets here if we want to hold the focus,
-                    // but since controls.target is updated, orbit controls will stay there.
                 }
             }
 
