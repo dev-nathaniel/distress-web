@@ -167,14 +167,14 @@ export default function Home() {
                 <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1579829366248-204fe8413f31?auto=format&fit=crop&w=800&q=80')] bg-cover bg-center opacity-20 grayscale group-hover:opacity-30 transition duration-700" />
 
                 <div className="relative z-20 mt-auto p-2">
-                  <h3 className="text-3xl font-bold mb-2">Deploy Drones Instantly</h3>
-                  <p className="text-zinc-400 max-w-md">
+                  <h3 className="text-2xl md:text-3xl font-bold mb-2">Deploy Drones Instantly</h3>
+                  <p className="text-zinc-400 max-w-md text-sm md:text-base">
                     Within seconds of a distress signal, our autonomous UAVs dispatch to your location providing live video feeds to responders and a physical deterrent to threats. Minimum one drone per local government.
                   </p>
-                  <div className="mt-6 flex gap-3">
-                    <span className="px-3 py-1 border border-white/10 bg-white/5 text-xs text-zinc-300">VIDEO SURVEILLANCE</span>
-                    <span className="px-3 py-1 border border-white/10 bg-white/5 text-xs text-zinc-300">LOUDSPEAKER</span>
-                    <span className="px-3 py-1 border border-white/10 bg-white/5 text-xs text-zinc-300">SPOTLIGHT</span>
+                  <div className="mt-6 flex flex-wrap gap-2">
+                    <span className="px-3 py-1 border border-white/10 bg-white/5 text-[10px] md:text-xs text-zinc-300 whitespace-nowrap">VIDEO SURVEILLANCE</span>
+                    <span className="px-3 py-1 border border-white/10 bg-white/5 text-[10px] md:text-xs text-zinc-300 whitespace-nowrap">LOUDSPEAKER</span>
+                    <span className="px-3 py-1 border border-white/10 bg-white/5 text-[10px] md:text-xs text-zinc-300 whitespace-nowrap">SPOTLIGHT</span>
                   </div>
                 </div>
               </GridCard>
@@ -318,7 +318,7 @@ export default function Home() {
 
               <GridCard className="p-8 flex flex-col items-center text-center bg-white/5 hover:border-red-500/30 transition duration-300 relative overflow-hidden">
                 {/* Fixed Popoular Badge Placement */}
-                <div className="absolute top-3 right-3 bg-red-600 text-white text-[10px] px-3 py-1 font-bold tracking-wider rounded-sm">POPULAR</div>
+                {/* <div className="absolute top-3 right-3 bg-red-600 text-white text-[10px] px-3 py-1 font-bold tracking-wider rounded-sm">POPULAR</div> */}
 
                 <h3 className="text-xl font-mono text-red-400 mb-2 mt-4">USAGE-BASED</h3>
                 <div className="text-4xl font-bold mb-6 text-white">₦0<span className="text-sm font-normal text-zinc-500">/mo</span></div>
