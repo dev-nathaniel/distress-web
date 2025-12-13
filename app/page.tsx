@@ -10,6 +10,19 @@ import { Footer } from '@/components/Footer';
 export default function Home() {
   const router = useRouter();
   const [isMobile, setIsMobile] = React.useState(false);
+    const [email, setEmail] = useState('');
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleEmailSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if(email) {
+        setSubmitted(true);
+        setTimeout(() => {
+            setEmail('');
+            setSubmitted(false);
+        }, 3000);
+    }
+  };
   return (
     <>
       <Navbar mobileMenuOpen={isMobile} setMobileMenuOpen={setIsMobile} />
@@ -44,7 +57,7 @@ export default function Home() {
                 Democratizing high-grade security for the masses. From the first click to drone deployment, we keep your audience connected and your safety guaranteed.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              {/* <div className="flex flex-col sm:flex-row gap-4">
                 <button
                   className="px-8 py-4 bg-white text-black font-bold text-lg hover:bg-zinc-200 transition flex items-center justify-center gap-2 group rounded-sm"
                 >
@@ -55,10 +68,32 @@ export default function Home() {
                   className="px-8 py-4 border border-white/20 hover:bg-white/5 transition text-lg font-medium rounded-sm text-zinc-300"
                 >
                   For Enterprise
-                </button>
+                </button> */}
+
+              <div className="flex flex-col gap-2 max-w-xl w-full">
+                <form onSubmit={handleEmailSubmit} className="flex flex-col sm:flex-row gap-3">
+                    <input 
+                        type="email" 
+                        placeholder="Enter your email address..." 
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        className="flex-grow bg-white/5 border border-white/10 px-6 py-4 text-white placeholder-zinc-500 focus:outline-none focus:border-red-500 transition-colors rounded-full min-w-0"
+                    />
+                    <button 
+                        type="submit"
+                        className="px-8 py-4 bg-white text-black font-bold hover:bg-zinc-200 transition whitespace-nowrap rounded-full disabled:opacity-70"
+                        disabled={submitted}
+                    >
+                        {submitted ? "YOU'RE ON THE LIST" : "JOIN WAITLIST"}
+                    </button>
+                </form>
+                {submitted && <p className="text-emerald-500 text-xs mt-1 animate-in fade-in pl-4">We'll be in touch when we launch.</p>}
+                <p className="text-zinc-600 text-xs pl-4 mt-2">Join the waitlist for early access to the pilot program.</p>
+            </div>
               </div>
 
-              <div className="mt-12 mb-10 flex items-center gap-6 text-sm text-zinc-600 font-mono">
+              {/* <div className="mt-12 mb-10 flex items-center gap-6 text-sm text-zinc-600 font-mono">
                 <span>TRUSTED BY:</span>
                 <div className="flex gap-6 opacity-50 grayscale hover:grayscale-0 transition duration-500">
                   <span>ESTATE·LINK</span>
@@ -66,7 +101,7 @@ export default function Home() {
                   <span>METRO·POL</span>
                   <span>SAFE·SCHOOLS</span>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* Abstract Hero Visual - "The Command Center" */}
