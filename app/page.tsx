@@ -91,7 +91,7 @@ export default function Home() {
                 {submitted && <p className="text-emerald-500 text-xs mt-1 animate-in fade-in pl-4">We'll be in touch when we launch.</p>}
                 <p className="text-zinc-600 text-xs pl-4 mt-2">Join the waitlist for early access to the pilot program.</p>
             </div>
-              </div>
+              {/* </div> */}
 
               {/* <div className="mt-12 mb-10 flex items-center gap-6 text-sm text-zinc-600 font-mono">
                 <span>TRUSTED BY:</span>
