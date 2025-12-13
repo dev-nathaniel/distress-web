@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { GridCard } from '../components/GridCard';
 import { ChevronRight, HeartPulse, AlertTriangle, Shield, Flame, Lock, Users, Activity, Radio, Smartphone, Globe, CheckCircle, Radar } from 'lucide-react';
